@@ -1,0 +1,84 @@
+{
+
+	url : "",
+	colums:
+	{
+		"unid":
+		{
+			"name":"ID типа",
+			"edit":false
+		},
+		"setid":
+		{
+			"name":"ID устройства",
+			"edit":false
+		},
+		"name":
+		{
+			"name":"Название"
+		},
+		"sectId":
+		{
+			"name":"Раздел",
+			"type":"section"
+		},
+		"color":
+		{
+			"name":"Цвет ячейки",
+			"type":"color"
+		},
+		"iconCust":
+		{
+			"name":"Иконка",
+			"type":"metro-icon"
+		},
+		"uiShow":
+		{
+			"name":"Видимость",
+			"type":"bool"
+		}
+		
+	}
+}
+
+{
+	onsubmit: function ,
+	fields:
+	{
+		"unid":
+		{
+			"name":"ID типа",
+			"edit":false
+		},
+		"setid":
+		{
+			"name":"ID устройства",
+			"edit":false
+		},
+		"name":
+		{
+			"name":"Название"
+		},
+		"sectId":
+		{
+			"name":"Раздел",
+			"type":"section"
+		},
+		"color":
+		{
+			"name":"Цвет ячейки",
+			"type":"color"
+		},
+		"iconCust":
+		{
+			"name":"Иконка",
+			"type":"metro-icon"
+		},
+		"uiShow":
+		{
+			"name":"Видимость",
+			"type":"bool"
+		}
+		
+	}
+}

@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name = "viewport" content = "width = device-width, initial-scale = 1.0, maximum-scale = 1.0, user-scalable=0">
+<title>ESP8266 WebSocket Demo</title>
+<style>
+"body { background-color: #808080; font-family: Arial, Helvetica, Sans-Serif; Color: #000000; }"
+</style>
+<script>
+var websock;
+var statusDIV;
+var textDIV;
+var cmdDIV;
+var bot_scroll;
+function start() {
+	var ip = document.getElementById('addr').value;
+	statusDIV = document.getElementById('status');
+	textDIV = document.getElementById('text');
+	cmdDIV = document.getElementById('cmd-text');
+	bot_scroll = document.getElementById('bot-scroll');
+	if(ip != "")
+	{
+		statusDIV.innerHTML = "Connecting...";
+		websock = new WebSocket('ws://' + ip + ':81/');
+		websock.onopen = function(evt) { console.log('websock open'); statusDIV.innerHTML = "Connected!";};
+		websock.onclose = function(evt) { console.log('websock close');statusDIV.innerHTML = "Closed!"; };
+		websock.onerror = function(evt) { console.log(evt);statusDIV.innerHTML = "Error:"+evt; };
+		websock.onmessage = function(evt) {
+			//console.log(evt);
+			
+			textDIV.innerHTML += "["+getNowFormat()+"]	|	"+evt.data.replace(/(?:\r\n|\n\n|\r|\n)/g, '<br />');
+			if(!evt.data.endsWith("\n") && !evt.data.endsWith("\r") )
+				textDIV.innerHTML += "<br />";
+			
+			if(bot_scroll.checked)
+				textDIV.scrollTop = textDIV.scrollHeight;
+		};
+	}
+}
+function getNowFormat()
+{
+	var d = new Date();
+	return  d.getFullYear() + "-" + ("0"+(d.getMonth()+1)).slice(-2) + "-" +
+    ("0" + d.getDate()).slice(-2) + " " + ("0" + d.getHours()).slice(-2) + ":" + ("0" + d.getMinutes()).slice(-2)+ ":" + ("0" + d.getSeconds()).slice(-2);
+}
+function clc()
+{
+	textDIV.innerHTML = '';
+}
+function sendCmd() {
+	websock.send(cmdDIV.value.replace('\\\\n', '\n')+'\n');
+	cmdDIV.value = '';
+}
+</script>
+</head>
+<body onload="start()">
+<div style="height: 120px;overflow-x:auto;overflow-y:hidden;width:98vw;display: inline-block;white-space: nowrap;">
+<h1>ESP8266 Remote Debug</h1>
+<input id="addr" hint="IP" />
+<button type="button" onclick="start(this);">Connect!</button> 
+<button type="button" onclick="clc()">Clear!</button> 
+<div id="status" style="display: inline-block;">Not connected</div>
+<input type="checkbox" id="bot-scroll" checked="true"> Scroll to Bottom
+</div>
+<div id="text" style="position:absolute;top:120px;bottom:60px;left: 15px;right:15px;border: 1px solid #000;padding-left: 5px;overflow-y: scroll;display: inline-block;white-space: nowrap;font-family: monospace;"></div>
+<div id="cmd-wrap" style="position:absolute;left: 15px;right:15px;border: 1px solid #000;padding-left: 5px;bottom:5px;height:50px;">
+	<input id="cmd-text" type="text" onKeyDown="if(event.keyCode==13) sendCmd();" style="width:calc(100% - 60px);height:calc(100% - 10px);display: inline-block;"/>
+	<button type="button" onclick="sendCmd()" style="width:50px;height:calc(100% - 15px);display: inline-block;top:5px;position:relative;" >Send!</button> 
+</div>
+
+</body>
+</html>

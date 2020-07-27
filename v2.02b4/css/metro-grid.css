@@ -1,0 +1,278 @@
+/*@import url('https://fonts.googleapis.com/css?family=Source+Sans+Pro');*/
+.grid-item
+{
+	/*width:350px;*/
+	min-width: 220px;
+	height: 150px;
+	background-color: #2980b9;
+	margin: 5px;
+	color: #FFF;
+	float:left;
+	position: relative;
+	display: block;
+	box-shadow: 0 0 5px gray;
+}
+.grid-section {
+	margin-bottom: 10px;
+}
+.grid-section-content {
+	overflow: hidden;
+	border: 5px solid #ecf0f1;
+	padding: 5px;
+}
+.grid-section-title {
+	padding: 7px;
+	font-size: 1.5em;
+	background-color: #ecf0f1;
+	color: #000;
+	font-family: Helvetica;
+	/* margin-bottom: 3px; */
+}
+@media only screen and (max-width:767px)
+ {
+	.grid-item
+	{
+		width:100%;
+		margin: 0px;
+		margin-bottom: 10px;
+	}
+}
+.grid-item-icon
+{
+	
+	margin-left:5px;
+	margin-bottom:25px;
+	margin-top:25px;
+	margin-right:5px;
+	height:100%; 
+	max-height: 70%;
+	object-fit: contain;
+	display:inline-block;
+	float:left;
+}
+.grid-item-actions {
+	display: inline-grid;
+	/*width: 50px;*/
+	float: right;
+	margin-right: 10px;
+}
+
+
+.grid-item-value
+{
+	margin-bottom:5px;margin-left:5px;
+	float:left;
+	height:100%; 	
+	display: inline-table;
+	color: #FFF;
+	font-size: 25pt;
+}
+
+
+.grid-item-value span
+{
+	font-family: 'Source Sans Pro', sans-serif;
+	/*display: inline-block;*/
+	vertical-align: middle;
+	
+	
+}
+.grid-item .slider-container {
+	width: 100%;
+	min-width: 200px;
+	height: 80px;
+	top: -7px;
+	position: relative;
+}
+@media only screen and (max-width:767px)
+{
+	.grid-item-value {
+		width: auto;
+		overflow-x: auto;
+		white-space: nowrap;
+		position: absolute;
+		display: inline-grid;
+		right: 10%;
+		/* flex-grow: 1; */
+		left: 28vw;
+		align-items: center;
+	}
+	.menu_icon
+	{
+		display: flex;
+	}
+	.grid-section-content {
+		overflow: hidden;
+		border: 5px solid #ecf0f1;
+		/*padding: 0px;
+		padding-top: 10px;*/
+	}
+	.grid-item .slider-container {
+		min-width: auto;
+		
+	}
+}
+
+.grid-item .irs--round .irs-grid-text {
+
+	color: #f2f2f2;
+	font-size: 13px;
+}
+.grid-item-front
+{
+	height: 100%;
+	display: inline;
+}
+.grid-item-back
+{
+	display:none;
+	/*width:100%;*/
+	/*height: 100%;*/
+	position: absolute;
+	top:0px;
+	bottom:0px;
+	left:0px;
+	right:0px;
+	margin:0;
+	color: #FFF;
+	padding: 25px;
+	background-color: #000A;
+	/*z-index: 10;*/
+	line-height: 20px;
+}
+.grid-item-info
+{
+	/*position: absolute;*/
+	right: 10;
+	margin-top:10;
+	width: 35px;
+	-webkit-filter: brightness(1) contrast(300%) invert(1);
+}
+.grid-item-back-edit
+{
+	position: absolute;
+	right: 10;
+	top:55px;
+	width: 35px;
+	-webkit-filter: brightness(1) contrast(300%) invert(1);
+}
+.grid-item-back-plot
+{
+	position: absolute;
+	right: 10;
+	top:105px;
+	width: 35px;
+	
+}
+.grid-item a
+{
+	color: #FFF;
+}
+.grid-item-back-title
+{
+	font-family: 'Source Sans Pro', sans-serif;
+	color: #FFF;
+	padding-left:10px;
+	padding-right:10px;
+	display: inline-block;
+	vertical-align: middle;
+	font-size: 18pt;
+}
+
+
+.switch {
+	position: relative;
+	display: inline-block;
+	width: 60px;
+	height: 34px;
+}
+
+.switch input { 
+	opacity: 0;
+	width: 0;
+	height: 0;
+}
+
+.slider {
+	position: absolute;
+	cursor: pointer;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: #ccc;
+	-webkit-transition: .4s;
+	transition: .4s;
+}
+
+.slider:before {
+	position: absolute;
+	content: "";
+	height: 26px;
+	width: 26px;
+	left: 4px;
+	bottom: 4px;
+	background-color: white;
+	-webkit-transition: .4s;
+	transition: .4s;
+}
+input[type=range] {
+	width: 10vw;
+	padding: 0px;
+	margin: 8px;
+	right:15px;
+	position:relative;
+	/*display: inline-block;*/
+	
+}
+@media only screen and (max-width:767px)
+{
+	input[type=range] {
+		width: auto;
+		float:right;
+		vertical-align: middle;
+		
+		/*bottom:75px;
+		right:15px;
+		margin: 0px;
+		left:-50px;
+		display: block;*/
+	}
+}
+input:checked + .slider {
+	background-color: #2196F3;
+}
+
+input:focus + .slider {
+	box-shadow: 0 0 1px #2196F3;
+}
+.tick-save-value{
+	position: absolute!important;
+	right: 10px!important;
+	top: 5px!important;
+}
+input:checked + .slider:before {
+	-webkit-transform: translateX(26px);
+	-ms-transform: translateX(26px);
+	transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+	border-radius: 34px;
+}
+
+.slider.round:before {
+	border-radius: 50%;
+}
+
+
+.row-hide
+{
+	display: none;
+}
+.irs--round .irs-grid {
+	position: absolute;
+	bottom: -6px;
+	
+}
